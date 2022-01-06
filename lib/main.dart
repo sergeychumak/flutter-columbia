@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
         fontFamily: 'ArameMono',
       ),
       home: const MainScreen(),
@@ -48,103 +48,69 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          const BackgroundLayout(),
-          AnimatedContainer(
-            transform: Matrix4.translationValues(xOffset, yOffset, 1)
-              ..rotateZ(-rotate * 3.1415927 / 180),
-            duration: const Duration(milliseconds: 200),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(16),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 10,
-                  color: Color(0xFFF9D303),
-                  offset: Offset(-16, -16),
-                )
-              ],
-            ),
-            child: Column(
-              children: [
-                Container(
-                  // height: 100,
-                  padding: const EdgeInsets.fromLTRB(16, 30, 16, 10),
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          if (isBackgroundLayoutShow) {
-                            setState(() {
-                              xOffset = 0;
-                              yOffset = 0;
-                              rotate = 0;
-                              isBackgroundLayoutShow = false;
-                            });
-                          } else {
-                            setState(() {
-                              xOffset = 200;
-                              yOffset = 230;
-                              rotate = 45;
-                              isBackgroundLayoutShow = true;
-                            });
-                          }
-                        },
-                        icon: !isBackgroundLayoutShow
-                            ? Icon(Icons.menu)
-                            : Icon(Icons.backspace),
-                        color: Colors.white,
-                      ),
-                      SvgPicture.asset(
-                        "assets/images/icon-burger-menu.svg",
-                        color: Colors.white,
-                        width: 32,
-                      ),
-                      SvgPicture.asset(
-                        'assets/images/icon-main-logo.svg',
-                        height: 12,
-                      ),
-                      Container(
-                          height: 24,
-                          width: 24,
-                          decoration: BoxDecoration(
-                            color: colorYellow,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(4),
-                            ),
-                          ),
-                          child: const Text("0"),
-                          alignment: Alignment.center)
-                    ],
-                  ),
-                ),
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                  ),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: brandIcons(),
-                    ),
-                  ),
-                ),
-                Image.asset(
-                  'assets/images/bnr-main-mv.jpeg',
-                  width: double.infinity,
-                ),
-              ],
-            ),
-          ),
-        ],
+      appBar: buildAppBar(),
+      body: Container(),
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      elevation: 0,
+      centerTitle: false,
+      title: SvgPicture.asset(
+        'assets/images/icon-main-logo.svg',
+        height: 12,
       ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: SvgPicture.asset(
+            'assets/images/icon-search.svg',
+            height: 32,
+          ),
+          color: Colors.white,
+        ),
+        Stack(
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                'assets/images/icon-cart.svg',
+                height: 32,
+              ),
+              color: Colors.white,
+            ),
+            Positioned(
+              top: 10.0,
+              left: 13.5,
+              child: Container(
+                transform: Matrix4.identity()..rotateZ(-33.0 * 3.1415 / 180),
+                width: 19,
+                height: 19,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  color: Colors.yellow,
+                ),
+                child: const Text(
+                  '0',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 10,
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: SvgPicture.asset(
+            'assets/images/icon-burger-menu.svg',
+            height: 32,
+          ),
+          color: Colors.white,
+        ),
+      ],
     );
   }
 }
