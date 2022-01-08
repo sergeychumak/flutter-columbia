@@ -1,30 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../config.dart';
+import '../mock_data/footer_menu_mock.dart';
 
-class BackgroundLayout extends StatelessWidget {
-  const BackgroundLayout({
+class Footer extends StatelessWidget {
+  const Footer({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(16, 100, 16, 50),
-      height: double.infinity,
-      width: double.infinity,
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 50),
       decoration: BoxDecoration(
-        color: colorBlack,
+        color: Colors.black,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SvgPicture.asset('assets/images/icon-main-logo.svg'),
+          Padding(
+            padding: const EdgeInsets.only(
+              bottom: 24.0,
+            ),
+            child: SvgPicture.asset(
+              'assets/images/icon-main-logo.svg',
+              height: 16,
+            ),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: listMenu(),
+            children: [
+              ...footerMenu1Mock(),
+              SizedBox(
+                height: 30,
+              ),
+              ...footerMenu2Mock(),
+              SizedBox(
+                height: 30,
+              ),
+            ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,14 +56,14 @@ class BackgroundLayout extends StatelessWidget {
                         Text(
                           '8 (800) 777-00-08',
                           style: TextStyle(
-                            color: colorText,
+                            color: Colors.grey,
                           ),
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 20),
                           padding: const EdgeInsets.all(4.0),
                           decoration: BoxDecoration(
-                            color: colorYellow,
+                            color: Colors.yellow,
                             borderRadius: const BorderRadius.all(
                               Radius.circular(4),
                             ),
@@ -56,7 +71,7 @@ class BackgroundLayout extends StatelessWidget {
                           child: Text(
                             '24/7',
                             style: TextStyle(
-                              color: colorBlack,
+                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -70,14 +85,14 @@ class BackgroundLayout extends StatelessWidget {
                     child: Text(
                       'support@urbanvibes.com',
                       style: TextStyle(
-                        color: colorText,
+                        color: Colors.grey,
                       ),
                     ),
                   ),
                   Text(
                     '© 2022 Urbanvibes',
                     style: TextStyle(
-                      color: colorText,
+                      color: Colors.grey,
                     ),
                   ),
                 ],
@@ -89,7 +104,7 @@ class BackgroundLayout extends StatelessWidget {
                 child: SvgPicture.asset(
                   'assets/images/icon-inst.svg',
                   width: 50,
-                  color: colorYellow,
+                  color: Colors.yellow,
                 ),
               ),
             ],

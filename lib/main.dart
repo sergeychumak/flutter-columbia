@@ -2,10 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_columbia/layouts/main_layout.dart';
 import 'package:flutter_svg/svg.dart';
-import 'components/main_loyaut/footer_widget.dart';
-import 'config.dart';
-import './layouts/background_layout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primaryColor: Colors.black,
         fontFamily: 'ArameMono',
       ),
       home: const MainScreen(),
@@ -49,12 +47,13 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: Container(),
+      body: const MainLayout(),
     );
   }
 
   AppBar buildAppBar() {
     return AppBar(
+      backgroundColor: Theme.of(context).primaryColor,
       elevation: 0,
       centerTitle: false,
       title: SvgPicture.asset(
