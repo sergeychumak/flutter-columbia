@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_columbia/components/brand_list.dart';
 import 'package:flutter_columbia/components/footer.dart';
+import 'package:flutter_columbia/components/instagram.dart';
 import 'package:flutter_columbia/components/subscription.dart';
 
 class MainLayout extends StatelessWidget {
@@ -14,6 +15,7 @@ class MainLayout extends StatelessWidget {
       child: Column(
         children: const [
           BrandList(),
+          Instagram(),
           Subscription(),
           Footer(),
         ],
