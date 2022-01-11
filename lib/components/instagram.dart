@@ -10,7 +10,7 @@ class Instagram extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.symmetric(vertical: 16),
       child: Column(
         children: [
           Padding(
